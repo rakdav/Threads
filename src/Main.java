@@ -9,6 +9,17 @@ public class Main
         System.out.println(t.isInterrupted());//прерван не прерван
             Thread.sleep(3000);
         System.out.println(t);
-        new MyThread1("MyThread").start();
+        System.out.println("Main Thread start");
+
+        for(int i=1;i<6;i++) {
+            Thread th= new JThread("Fast" + i);
+            th.start();
+            th.join();
+        }
+        System.out.printf("main Thread finished");
+
+        Thread myThread=new Thread(new RThread(),"MyRunThread");
+        myThread.start();
+
     }
 }
